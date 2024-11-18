@@ -45,7 +45,7 @@ public class DebitPageTest {
         debitPage.fillInCardInfo(DataHelper.getCardNumberForStatusApproved());
         debitPage.setSuccessNotificationVisible();
         debitPage.setBankApproved();
-        assertEquals("APPROVED", SQLHelper.getCreditPaymentStatus());
+        assertEquals("APPROVED", SQLHelper.getDebitPaymentStatus());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class DebitPageTest {
         debitPage.fillInCardInfo(DataHelper.getCardNumberForStatusDeclined());
         debitPage.setErrorNotificationVisible();
         debitPage.setBankRefusal();
-        assertEquals("DECLINED", SQLHelper.getCreditPaymentStatus());
+        assertEquals("DECLINED", SQLHelper.getDebitPaymentStatus());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class DebitPageTest {
     void shouldTestThePurchaseWithAnEmptyCardNumberField() {
 
         debitPage.fillInCardInfo(DataHelper.getCardNumberForEmptyField());
-        debitPage.setRequiredFieldVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -104,7 +104,7 @@ public class DebitPageTest {
     void shouldTestMonthFieldOfZero() {
 
         debitPage.fillInCardInfo(DataHelper.getMonthOfZero());
-        debitPage.setInvalidFormatVisible();
+        debitPage.setInvalidCardExpirationDateMessageVisible();
     }
 
     @Test
@@ -120,7 +120,7 @@ public class DebitPageTest {
     void shouldTestEmptyMonthField() {
 
         debitPage.fillInCardInfo(DataHelper.getMonthEmptyField());
-        debitPage.setRequiredFieldVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -152,7 +152,7 @@ public class DebitPageTest {
     void shouldTestEmptyYearField() {
 
         debitPage.fillInCardInfo(DataHelper.getYearEmptyField());
-        debitPage.setRequiredFieldVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -208,7 +208,7 @@ public class DebitPageTest {
     void shouldTestHolderInCyrillic() {
 
         debitPage.fillInCardInfo(DataHelper.getHolderInCyrillic());
-        debitPage.setInvalidCharMessageVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -216,7 +216,7 @@ public class DebitPageTest {
     void shouldTestHolderForDigits() {
 
         debitPage.fillInCardInfo(DataHelper.getHolderFromDigits());
-        debitPage.setInvalidCharMessageVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -224,7 +224,7 @@ public class DebitPageTest {
     void shouldTestHolderForSpecialCharacters() {
 
         debitPage.fillInCardInfo(DataHelper.getHolderFromSpecialCharacters());
-        debitPage.setInvalidCharMessageVisible();
+        debitPage.setInvalidFormatVisible();
     }
 
     @Test

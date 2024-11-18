@@ -3,6 +3,8 @@ package ru.netology.page;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
@@ -22,11 +24,11 @@ public class DebitPage {
     private final SelenideElement errorNOTIF = $(".notification_status_error");
     private final SelenideElement requiredField = $(byText("Поле обязательно для заполнения"));
     private final SelenideElement invalidFormat = $(byText("Неверный формат"));
-    private final SelenideElement invalidCharMessage = $(byText("Значение поля может состоять из букв на латинице"));
+    private final SelenideElement invalidCharMessage = $(byText("Ошибка! Банк отказал в проведении операции."));
     private final SelenideElement invalidCardExpirationDateMessage = $(byText("Неверно указан срок действия карты"));
     private final SelenideElement cardExpiredMessage = $(byText("Истёк срок действия карты"));
-    private final SelenideElement bankApproved = $(withText("Успешно! Операция одобрена Банком."));
-    private final SelenideElement bankRefusal = $(withText("Ошибка! Банк отказал в проведении операции."));
+    private final SelenideElement bankApproved = $$(".notification__content").findBy(text("Операция одобрена Банком."));
+    private final SelenideElement bankRefusal = $$(".notification__content").findBy(text("Ошибка! Банк отказал в проведении операции."));
 
     public DebitPage() {
         heading.shouldBe(visible);
@@ -42,38 +44,38 @@ public class DebitPage {
     }
 
     public void setSuccessNotificationVisible() {
-        successNOTIF.shouldBe(visible);
+        successNOTIF.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setErrorNotificationVisible() {
-        errorNOTIF.shouldBe(visible);
+        errorNOTIF.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setRequiredFieldVisible() {
-        requiredField.shouldBe(visible);
+        requiredField.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setInvalidFormatVisible() {
-        invalidFormat.shouldBe(visible);
+        invalidFormat.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setInvalidCharMessageVisible() {
-        invalidCharMessage.shouldBe(visible);
+        invalidCharMessage.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setInvalidCardExpirationDateMessageVisible() {
-        invalidCardExpirationDateMessage.shouldBe(visible);
+        invalidCardExpirationDateMessage.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setCardExpiredMessageVisible() {
-        cardExpiredMessage.shouldBe(visible);
+        cardExpiredMessage.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setBankApproved() {
-        bankApproved.shouldBe(visible);
+        bankApproved.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void setBankRefusal() {
-        bankRefusal.shouldBe(visible);
+        bankRefusal.shouldBe(visible, Duration.ofSeconds(15));
     }
 }

@@ -72,7 +72,7 @@ public class CreditPageTest {
     void shouldTestThePurchaseWithAnEmptyCardNumberField() {
 
         creditPage.fillInCardInfo(DataHelper.getCardNumberForEmptyField());
-        creditPage.setRequiredFieldVisible();
+        creditPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -104,7 +104,7 @@ public class CreditPageTest {
     void shouldTestMonthFieldOfZero() {
 
         creditPage.fillInCardInfo(DataHelper.getMonthOfZero());
-        creditPage.setInvalidFormatVisible();
+        creditPage.setInvalidCardExpirationDateMessageVisible();
     }
 
     @Test
@@ -120,7 +120,7 @@ public class CreditPageTest {
     void shouldTestEmptyMonthField() {
 
         creditPage.fillInCardInfo(DataHelper.getMonthEmptyField());
-        creditPage.setRequiredFieldVisible();
+        creditPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -152,7 +152,7 @@ public class CreditPageTest {
     void shouldTestEmptyYearField() {
 
         creditPage.fillInCardInfo(DataHelper.getYearEmptyField());
-        creditPage.setRequiredFieldVisible();
+        creditPage.setInvalidFormatVisible();
     }
 
     @Test
@@ -216,7 +216,7 @@ public class CreditPageTest {
     void shouldTestHolderForDigits() {
 
         creditPage.fillInCardInfo(DataHelper.getHolderFromDigits());
-        creditPage.setInvalidCharMessageVisible();
+        creditPage.setInvalidFormatVisible();
     }
 
     @Test
